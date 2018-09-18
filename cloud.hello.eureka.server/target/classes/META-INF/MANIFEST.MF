@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: cloud.hello.eureka.server
+Implementation-Version: 0.1
+Built-By: I327636
+Implementation-Vendor-Id: horus
+Build-Jdk: 1.8.0_181
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/cloud.hello.eureka.server
+Created-By: Maven Integration for Eclipse
+
