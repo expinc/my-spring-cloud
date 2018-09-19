@@ -1,6 +1,0 @@
-package cloud.hello.eureka.consumer;
-
-public class HelloController
-{
-
-}

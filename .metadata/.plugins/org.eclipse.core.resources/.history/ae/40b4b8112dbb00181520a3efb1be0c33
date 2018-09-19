@@ -1,7 +1,0 @@
-package cloud.hello.eureka.server;
-
-@EnableEurekaServer
-
-public class EurekaServerApplication {
-
-}
