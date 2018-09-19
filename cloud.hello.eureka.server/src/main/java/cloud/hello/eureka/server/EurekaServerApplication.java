@@ -11,6 +11,7 @@ public class EurekaServerApplication
 {
 	public static void main(String[] args)
 	{
+		// args: --spring.profiles.active=<hostname>
 		SpringApplication.run(EurekaServerApplication.class, args);
 	}
 }
