@@ -1,10 +1,7 @@
 package cloud.hello.eureka.consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 
 @RequestMapping("/hello")
@@ -15,23 +12,42 @@ public class HelloController
 //	@Autowired
 //	private LoadBalancerClient client;	// Default load balancer
 
-	@Autowired
-	private RestTemplate restTemplate;
+//	@Autowired
+//	private RestTemplate restTemplate;	// Not for Feign
+	
+    @Autowired
+    HelloRemote helloRemote;
 
 
-	@GetMapping("/")
-	public String hello(@RequestParam String name)
+    // Not for Feign:
+//	@GetMapping("/")
+//	public String hello(@RequestParam String name)
+//	{
+//		name = adjustName(name);
+//		
+//		// Request by default load balancer:
+////		ServiceInstance instance = client.choose("eureka-producer");
+////		String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/hello/?name=" + name;
+//		
+//		// Request by Ribbon:
+//		String url = "http://eureka-producer/hello/?name=" + name;
+//		
+//		return restTemplate.getForObject(url, String.class);
+//	}
+    
+    
+    // For Feign
+	@GetMapping("/{name}")
+	public String hello(@PathVariable("name") String name)
 	{
-		name += " (consumer)";
-		
-		// Request by default load balancer:
-//		ServiceInstance instance = client.choose("eureka-producer");
-//		String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/hello/?name=" + name;
-		
-		// Request by Ribbon:
-		String url = "http://eureka-producer/hello/?name=" + name;
-		
-		return restTemplate.getForObject(url, String.class);
+		return helloRemote.hello(adjustName(name));
+	}
+	
+	
+	// To distinguish between calling from consumer and calling from producer
+	private String adjustName(String name)
+	{
+		return name += " (consumer)";
 	}
 
 }
