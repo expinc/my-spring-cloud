@@ -20,32 +20,28 @@ public class HelloController
 
 
     // Not for Feign:
-	@GetMapping("/")
-	public String hello(@RequestParam String name)
-	{
-		name = adjustName(name);
-		
-		// Request by default load balancer:
-//		ServiceInstance instance = client.choose("eureka-producer");
-//		String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/hello/?name=" + name;
-		
-		// Request by Ribbon:
+//	@GetMapping("/")
+//	public String hello(@RequestParam String name)
+//	{
+//		name = adjustName(name);
+//		
+//		// Request by default load balancer:
+////		ServiceInstance instance = client.choose("eureka-producer");
+////		String url = "http://" + instance.getHost() + ":" + instance.getPort() + "/hello/?name=" + name;
+//		
+//		// Request by Ribbon:
 //		String url = "http://eureka-producer/hello/?name=" + name;
-		
-		// Not for Feign:
+//		
 //		return restTemplate.getForObject(url, String.class);
-		
-		// Request by Feign
-		return helloRemote.hello(name);
-	}
+//	}
     
     
     // For Feign
-//	@GetMapping("/{name}")
-//	public String hello(@PathVariable("name") String name)
-//	{
-//		return helloRemote.hello(adjustName(name));
-//	}
+	@GetMapping("/{name}")
+	public String hello(@PathVariable("name") String name)
+	{
+		return helloRemote.hello(adjustName(name));
+	}
 	
 	
 	// To distinguish between calling from consumer and calling from producer

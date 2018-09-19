@@ -32,11 +32,9 @@ public class HelloController
 		// Request by Ribbon:
 //		String url = "http://eureka-producer/hello/?name=" + name;
 		
-		// Not for Feign:
-//		return restTemplate.getForObject(url, String.class);
+//		return restTemplate.getForObject(url, String.class);	// Not for Feign
 		
-		// Request by Feign
-		return helloRemote.hello(name);
+		return helloRemote.hello(adjustName(name));
 	}
     
     

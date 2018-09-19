@@ -36,7 +36,7 @@ public class HelloController
 //		return restTemplate.getForObject(url, String.class);
 		
 		// Request by Feign
-		return helloRemote.hello(name);
+		return helloRemote.hello(adjustName(name));
 	}
     
     
