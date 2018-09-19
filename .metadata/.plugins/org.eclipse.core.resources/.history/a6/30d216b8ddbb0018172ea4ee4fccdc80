@@ -15,7 +15,6 @@ public class HelloController
 	@GetMapping("/")
 	public String hello(@RequestParam String name)
 	{
-		// Use "--config.instance=<instance no> --server.port=<port>" to specify instance number and port
 		return "[" + instance + "] " + "Hello, " + name + "!\n " + new Date();
 	}
 
