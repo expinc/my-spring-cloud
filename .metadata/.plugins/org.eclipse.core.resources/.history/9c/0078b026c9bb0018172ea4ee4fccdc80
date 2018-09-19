@@ -1,0 +1,9 @@
+package cloud.hello.eureka.producer;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EurekaProducerApplication
+{
+
+}

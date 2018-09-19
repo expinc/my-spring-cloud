@@ -1,0 +1,6 @@
+package cloud.hello.eureka.producer;
+
+public class EurekaProducerApplication
+{
+
+}
